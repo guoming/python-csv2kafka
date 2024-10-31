@@ -1,4 +1,4 @@
-# CSV 数据写入 Kakfa
+# CSV 数据写入 Kafka
 ## 1. 如何安装
 安装依赖
 ```sh
