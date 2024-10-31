@@ -10,7 +10,7 @@ import config
 # 转换时间格式
 def convert_time_format(time_str):
     # 将时间从 'YYYY-MM-DD HH:MM:SS' 转换成 'MM/DD/YYYY HH:MM:SS'
-    return datetime.strptime(time_str, "%Y-%m-%d %H:%M:%S").strftime("%m/%d/%Y %H:%M:%S")
+    return datetime.strptime(time_str, "%d/%m/%Y %H:%M:%S").strftime("%m/%d/%Y %H:%M:%S")
 
 
 # 配置 Kafka 生产者
@@ -24,8 +24,8 @@ csv_file_path = 'db/input.csv'  # 替换为你的 CSV 文件路径
 df = pd.read_csv(csv_file_path,sep=config.csv_sep)
 
 
-#df['can_bill_date_time'] = df['can_bill_date_time'].apply(convert_time_format)
-#df['order_create_time'] = df['order_create_time'].apply(convert_time_format)
+df['can_bill_date_time'] = df['can_bill_date_time'].apply(convert_time_format)
+df['order_create_time'] = df['order_create_time'].apply(convert_time_format)
 
 json_records = df.to_dict(orient='records')  # 将 DataFrame 转换为 JSON 格式
 
